@@ -1,6 +1,8 @@
 package com.moon.demo;
 
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,21 @@ class DemoApplicationTests {
 		Future<String> task2 = asyncTask.doTaskTwo();
 		Future<String> task3 = asyncTask.doTaskThree();
 
+		// 等待5秒後 若沒有結束回傳java.util.concurrent.TimeoutException
+		// task2.get(5, TimeUnit.SECONDS);
+
+		// 等待10秒
+//		Thread.sleep(10000);
+//		if (!task1.isDone() || !task2.isDone() || !task3.isDone()) {
+//			// 有任務沒有完成 拋出exception
+//			throw new TimeoutException("任務失敗");
+//		}
+
 		while (true) {
 			if (task1.isDone() && task2.isDone() && task3.isDone()) {
-				// 三個任務都呼叫完成，退出迴圈等待
+				// 任務全部完成
 				break;
 			}
-			Thread.sleep(1000);
 		}
 
 		long end = System.currentTimeMillis();

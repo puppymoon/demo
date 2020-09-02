@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component("AsyncTask")
 public class AsyncTask {
 
-	@Async
+	@Async("myTaskExecutor")
 	public Future<String> doTaskOne() throws Exception {
 		System.out.println("開始做任務一");
 		long start = System.currentTimeMillis();
@@ -19,7 +19,7 @@ public class AsyncTask {
 		return new AsyncResult<>("任務一完成");
 	}
 	
-	@Async
+	@Async("myTaskExecutor")
 	public Future<String> doTaskTwo() throws Exception {
 		System.out.println("開始做任務二");
 		long start = System.currentTimeMillis();
@@ -29,7 +29,7 @@ public class AsyncTask {
 		return new AsyncResult<>("任務二完成");
 	}
 	
-	@Async
+	@Async("myTaskExecutor")
 	public Future<String> doTaskThree() throws Exception {
 		System.out.println("開始做任務三");
 		long start = System.currentTimeMillis();
