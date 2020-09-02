@@ -16,7 +16,7 @@ class DemoApplicationTests {
 	@Autowired
 	private AsyncTask asyncTask;
 
-	@Test
+//	@Test
 	void contextLoads() throws Exception {
 
 		long start = System.currentTimeMillis();
